@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	
+		html,body{
+			margin:0;
+			padding:0;
+		}
+		#capsMaker{
+			
+			width:900px;
+			margin:20px auto;
+		}
+		.capsFrame,.capsText,.settingFrame{
+			width:100%;
+
+		}
+		.capsFrame{
+			position:relative;
+		}
+		.imgFrame img{
+			width:100%;
+		}
+		.capsText{
+			background:red;
+			color:white;
+			padding:10px;
+			width:calc(100% - 20px);
+			position:absolute;
+			bottom:0;
+		}
+		.capsText p{
+			margin:0;
+		}
+		.settingFrame input{
+			padding:10px 20px;
+			width:calc(100% - 42px);
+			border:1px solid red;
+			margin:10px 0px;
+		}
+		.settingFrame input:focus{
+			background:lightgray;
+			color:black;
+		}
+		.settingFrame button{
+			cursor:pointer;
+			border:none;
+			background:red;
+			color:white;
+			padding:5px 10px;
+		}
+		
+	</style>
+</head>
+<body>	
+	<script type="text/javascript">
+		var main = document.createElement('div')
+		main.setAttribute('id','capsMaker')
+		document.body.appendChild(main)
+		
+			var capsFrame = document.createElement('div')
+			capsFrame.setAttribute('class','capsFrame')
+			main.appendChild(capsFrame)
+
+				var imgFrame = document.createElement('div')
+				imgFrame.setAttribute('class','imgFrame')
+				capsFrame.appendChild(imgFrame)
+
+					var capsImg = document.createElement('img')
+					imgFrame.appendChild(capsImg)
+					document.getElementsByTagName('img')[0].src="images/01.jpg"
+
+				var capsText = document.createElement('div')
+				capsText.setAttribute('class','capsText')
+				capsFrame.appendChild(capsText)
+
+					var capsInfo = document.createElement('p')
+					var defaultCapsInfo= document.createTextNode("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus numquam magni, vel earum hic, quaerat consequuntur sit explicabo saepe mollitia, cumque esse quas nulla iusto aut repellat! Alias voluptate, nisi.")
+					capsInfo.appendChild(defaultCapsInfo)
+					capsText.appendChild(capsInfo)
+
+
+			var settingFrame = document.createElement('div')
+			settingFrame.setAttribute('class','settingFrame')
+			main.appendChild(settingFrame)
+
+				var imageInput = document.createElement('input')
+				imageInput.setAttribute('placeholder',"Seklinizin linkini bura daxil edin")
+				settingFrame.appendChild(imageInput)
+
+				var imageButton = document.createElement('button')
+				imageButton.setAttribute('onclick','addImage()')
+				settingFrame.appendChild(imageButton)
+
+					var a = document.createTextNode('ADD IMAGE')
+					imageButton.appendChild(a)
+
+				var textInput = document.createElement('input')
+				textInput.setAttribute('placeholder',"Seklinizin linkini bura daxil edin")
+				settingFrame.appendChild(textInput)
+
+				var textButton = document.createElement('button')
+				textButton.setAttribute('onclick','addText()')
+				settingFrame.appendChild(textButton)
+
+					var a = document.createTextNode('ADD TEXT')
+					textButton.appendChild(a)
+
+		var addImage =function(){
+
+			var capsImg=document.getElementsByTagName("input")[0].value;
+			if(capsImg==""){
+				alert("Sekil yoxdur")
+			}else{
+				console.log(capsImg)
+				document.getElementsByClassName("imgFrame")[0].getElementsByTagName("img")[0].src="images/"+capsImg;
+			}
+			
+			
+		}
+
+		function addText(){
+			var capsText=document.getElementsByTagName("input")[1].value;
+			document.getElementsByClassName("capsText")[0].innerHTML="<p>"+capsText+"</p>"
+		}
+	</script>
+</body>
+</html>
